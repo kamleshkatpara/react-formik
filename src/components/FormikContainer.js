@@ -14,10 +14,12 @@ function FormikContainer() {
   const initialValues = {
     email: "",
     description: "",
+    selectOption: "",
   };
   const validationSchema = Yup.object({
     email: Yup.string().required("Please enter email address"),
     description: Yup.string().required("Please enter description"),
+    selectOption: Yup.string().required("Required"),
   });
 
   const onSubmit = (values) => console.log("Form Data", values);
