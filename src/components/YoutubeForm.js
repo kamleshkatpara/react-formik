@@ -50,8 +50,7 @@ function YoutubeForm() {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={onSubmit}
-      validateOnChange={false}
-      validateOnBlur={false}
+      validadeOnMount
     >
       {(formik) => {
         console.log("Formik Props", formik);
@@ -177,7 +176,9 @@ function YoutubeForm() {
             >
               Visit Fields
             </button>
-            <button type="submit">Submit</button>
+            <button type="submit" disabled={!formik.isValid}>
+              Submit
+            </button>
             <button onClick={() => formik.resetForm()} type="button">
               Reset
             </button>
