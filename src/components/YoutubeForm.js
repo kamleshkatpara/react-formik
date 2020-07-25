@@ -1,5 +1,5 @@
 import React from 'react'
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 const initialValues = {
@@ -30,19 +30,19 @@ function YoutubeForm() {
                 
                 <div className='form-control'>
                 <label htmlFor="name">Name</label>
-                <input type="text" id="name" name="name" />
+                <Field type="text" id="name" name="name" />
                 <ErrorMessage className='error' name="name" component='div' />
                 </div>
 
                 <div className='form-control'>
                 <label htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" />
+                <Field type="email" id="email" name="email" />
                 <ErrorMessage className="error" name="email" component='div'/>
                 </div>
 
                 <div className='form-control'>
                 <label htmlFor="channel">Channel</label>
-                <input type="text" id="channel" name="channel" />
+                <Field type="text" id="channel" name="channel" />
                 <ErrorMessage className="error" name="channel" component='div' />
                 </div>
 
