@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Formik,
   Form,
@@ -16,6 +16,20 @@ const initialValues = {
   channel: "",
   comments: "",
   address: "",
+  social: {
+    facebook: "",
+    twitter: "",
+  },
+  phoneNumbers: ["", ""],
+  phNumbers: [""],
+};
+
+const savedValues = {
+  name: "Vishwas",
+  email: "v@example.com",
+  channel: "codevolution",
+  comments: "Welcome to Formik",
+  address: "Mumbai",
   social: {
     facebook: "",
     twitter: "",
@@ -47,12 +61,14 @@ const validateComments = (value) => {
 };
 
 function YoutubeForm() {
+  const [formValues, setformValues] = useState(null);
+
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={formValues || initialValues}
       validationSchema={validationSchema}
       onSubmit={onSubmit}
-      validadeOnMount
+      enableReinitialize
     >
       {(formik) => {
         console.log("Formik Props", formik);
@@ -156,7 +172,10 @@ function YoutubeForm() {
                 }}
               </FieldArray>
             </div>
-            <button
+            {/* <button
+              type="button"
+              onClick={() => formik.validateField("comments")}
+            >  <button
               type="button"
               onClick={() => formik.validateField("comments")}
             >
@@ -177,6 +196,27 @@ function YoutubeForm() {
               }
             >
               Visit Fields
+            </button>
+              Validate Comments
+            </button>
+            <button type="button" onClick={() => formik.validateForm()}>
+              Validate all
+            </button>
+            <button
+              type="button"
+              onClick={() =>
+                formik.setTouched({
+                  name: true,
+                  email: true,
+                  channel: true,
+                  comments: true,
+                })
+              }
+            >
+              Visit Fields
+            </button> */}
+            <button type="button" onClick={() => setformValues(savedValues)}>
+              Load Save Data
             </button>
             <button
               type="submit"
