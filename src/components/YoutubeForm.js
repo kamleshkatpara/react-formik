@@ -12,7 +12,8 @@ const initialValues = {
     social: {
         facebook: '',
         twitter: ''
-    }
+    },
+    phoneNumbers: ['', '']
 };
 
 const onSubmit = values => {
@@ -28,66 +29,76 @@ const validationSchema = Yup.object({
 function YoutubeForm() {
 
     return (
-        <Formik 
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={onSubmit}
+        <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={onSubmit}
         >
             <Form>
-                
+
                 <div className='form-control'>
-                <label htmlFor="name">Name</label>
-                <Field type="text" id="name" name="name" />
-                <ErrorMessage name="name" component={TextError} />
+                    <label htmlFor="name">Name</label>
+                    <Field type="text" id="name" name="name" />
+                    <ErrorMessage name="name" component={TextError} />
                 </div>
 
                 <div className='form-control'>
-                <label htmlFor="email">Email</label>
-                <Field type="email" id="email" name="email" />
-                <ErrorMessage name="email">
-                    {
-                        (errorMsg) => <div className='error'>{errorMsg}</div>
-                    }
-                </ErrorMessage>
-                </div>
-
-                <div className='form-control'>
-                <label htmlFor="channel">Channel</label>
-                <Field type="text" id="channel" name="channel" />
-                <ErrorMessage className="error" name="channel" component='div' />
-                </div>
-
-                <div className='form-control'>
-                <label htmlFor="comments">Comments</label>
-                <Field as="textarea" id="comments" name="comments" />
-                </div>
-
-
-                <div className='form-control'>
-                <label htmlFor="address">Address</label>
-                <Field name="address">
-                    {
-                        (props) => {
-                            const { field, form, meta } = props;
-                            return (
-                                <div>
-                                    <input type='text' id="address" {...field} />
-                                    { meta.touched && meta.error ? <div>{meta.error}</div> : null }
-                                </div>
-                            )
+                    <label htmlFor="email">Email</label>
+                    <Field type="email" id="email" name="email" />
+                    <ErrorMessage name="email">
+                        {
+                            (errorMsg) => <div className='error'>{errorMsg}</div>
                         }
-                    }
-                </Field>
+                    </ErrorMessage>
                 </div>
 
                 <div className='form-control'>
-                <label htmlFor="facebook">Facebook Profile</label>
-                <Field type="text" id="facebook" name="social.facebook" />
+                    <label htmlFor="channel">Channel</label>
+                    <Field type="text" id="channel" name="channel" />
+                    <ErrorMessage className="error" name="channel" component='div' />
                 </div>
 
                 <div className='form-control'>
-                <label htmlFor="twitter">Twitter Profile</label>
-                <Field type="text" id="twitter" name="social.twitter" />
+                    <label htmlFor="comments">Comments</label>
+                    <Field as="textarea" id="comments" name="comments" />
+                </div>
+
+
+                <div className='form-control'>
+                    <label htmlFor="address">Address</label>
+                    <Field name="address">
+                        {
+                            (props) => {
+                                const { field, form, meta } = props;
+                                return (
+                                    <div>
+                                        <input type='text' id="address" {...field} />
+                                        {meta.touched && meta.error ? <div>{meta.error}</div> : null}
+                                    </div>
+                                )
+                            }
+                        }
+                    </Field>
+                </div>
+
+                <div className='form-control'>
+                    <label htmlFor="facebook">Facebook Profile</label>
+                    <Field type="text" id="facebook" name="social.facebook" />
+                </div>
+
+                <div className='form-control'>
+                    <label htmlFor="twitter">Twitter Profile</label>
+                    <Field type="text" id="twitter" name="social.twitter" />
+                </div>
+
+                <div className='form-control'>
+                    <label htmlFor="primaryPh">Primary Phone Number</label>
+                    <Field type="text" id="primaryPh" name="phoneNumbers[0]" />
+                </div>
+
+                <div className='form-control'>
+                    <label htmlFor="secondaryPh">Secondary Phone Number</label>
+                    <Field type="text" id="secondaryPh" name="phoneNumbers[1]" />
                 </div>
 
                 <button type="submit">Submit</button>
